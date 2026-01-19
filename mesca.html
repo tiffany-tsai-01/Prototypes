@@ -1,0 +1,345 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Multi-zone — Product Specifications</title>
+
+  <style>
+    :root{
+      --me-red:#C40001;
+      --ink:#111;
+      --line:#2b2b2b;
+      --grid:#8a8a8a;
+      --soft:#f2f2f2;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      background:#fff;
+    }
+
+    .sheet{
+      margin: 18px auto;
+      padding: 16px 16px 10px;
+      max-width: 1200px;
+      border: 1px solid #e6e6e6;
+      box-shadow: 0 2px 18px rgba(0,0,0,.06);
+      background:#fff;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:16px;
+      padding-bottom:10px;
+      border-bottom: 2px solid var(--me-red);
+      margin-bottom:10px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      min-width: 320px;
+    }
+
+    .brand .logo{
+      width: 180px;
+      height: 55px;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+    }
+    .brand .logo img{
+      max-width: 100%;
+      max-height: 100%;
+      display:block;
+    }
+
+    .brand .meta{ line-height:1.15; }
+
+    .kicker{
+      font-size: 11px;
+      letter-spacing: .5px;
+      text-transform:uppercase;
+      color:#555;
+      margin: 0 0 4px 0;
+    }
+    .title{
+      margin:0;
+      font-size: 22px;
+      letter-spacing: .8px;
+      text-transform:uppercase;
+      color: var(--me-red);
+    }
+    .subtitle{
+      margin: 4px 0 0 0;
+      font-size: 11px;
+      color:#333;
+    }
+
+    .controls{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+    }
+
+    .btn{
+      appearance:none;
+      border: 1px solid #bdbdbd;
+      background: #fff;
+      padding: 8px 10px;
+      font-size: 12px;
+      cursor:pointer;
+      border-radius: 3px;
+    }
+    .btn:hover{ border-color:#888; }
+
+    .table-wrap{
+      overflow:auto;
+      border: 1px solid var(--line);
+    }
+
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 11px;
+    }
+
+    thead th{
+      border-right: 1px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 8px 6px;
+      vertical-align: middle;
+    }
+
+    thead tr:first-child th{
+      background: var(--me-red);
+      color:#fff;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      font-weight:700;
+    }
+
+    thead tr:nth-child(2) th{
+      background: var(--me-red);
+      color:#fff;
+      font-weight:700;
+    }
+
+    th.lefthead{ text-align:left; }
+
+    tbody td{
+      border-right: 1px solid var(--grid);
+      border-bottom: 1px solid var(--grid);
+      padding: 6px 6px;
+      vertical-align: top;
+      background:#fff;
+    }
+
+    td.group{
+      background: var(--soft);
+      font-weight: 700;
+      text-transform:uppercase;
+      letter-spacing:.35px;
+      width: 220px;
+    }
+
+    td.attr{
+      width: 250px;
+      font-weight: 600;
+      background:#fff;
+    }
+
+    td.unit{
+      width: 88px;
+      text-align:center;
+      color:#333;
+      white-space:pre-line;
+      background:#fff;
+      font-weight: 700;
+    }
+
+    td.val{
+      text-align:center;
+      font-variant-numeric: tabular-nums;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .en{ display:block; }
+    .fr{
+      display:block;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0;
+      text-transform:none;
+      color:#333;
+      margin-top: 1px;
+    }
+
+    .notes{
+      margin-top: 10px;
+      font-size: 10px;
+      color:#333;
+      line-height:1.25;
+      white-space: pre-line; /* preserves line breaks */
+    }
+    .notes .label{
+      font-weight: 700;
+      text-transform:uppercase;
+      letter-spacing:.4px;
+      margin-right:6px;
+    }
+
+    /* PRINT */
+    @page{
+      size: letter landscape;
+      margin: 0.35in;
+    }
+
+    @media print{
+      body{ background:#fff; }
+      .sheet{
+        margin:0;
+        padding:0;
+        border:none;
+        box-shadow:none;
+        width: 10.3in;
+      }
+      .controls{ display:none; }
+      .table-wrap{
+        border: 1px solid var(--line);
+        overflow: visible;
+      }
+      table{ font-size: 9.5px; }
+      *{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sheet">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">
+          <img
+            src="https://rangerheating.com/assets/images/mitsubishi/mitsubishi-logo.png"
+            alt="Mitsubishi Electric"
+            loading="eager"
+          />
+        </div>
+
+        <div class="meta">
+          <p class="kicker">Product Specifications</p>
+          <h1 class="title">Multi-Zone</h1>
+          <p class="subtitle">Formatted for Letter (11×8.5) — Landscape</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn" type="button" onclick="window.print()">Print</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table aria-label="Cooling Only Specifications Table">
+        <thead>
+          <tr>
+            <th class="lefthead" style="width:220px;">MODEL<br><span style="font-weight:600;opacity:.92;">MODÈLE</span></th>
+            <th class="lefthead" style="width:250px;">INDOOR UNIT<br><span style="font-weight:600;opacity:.92;">UNITÉ INTÉRIEURE</span></th>
+            <th style="width:88px;"></th>
+            <th>MSY-GX09NL</th>
+            <th>MSY-GX12NL</th>
+            <th>MSY-GX15NL</th>
+            <th>MSY-GX18NL</th>
+            <th>MSY-GX24NL</th>
+            <th>MSY-GX30NL</th>
+            <th>MSY-GX36NL</th>
+          </tr>
+          <tr>
+            <th class="lefthead"></th>
+            <th class="lefthead">OUTDOOR UNIT<br><span style="font-weight:600;">UNITÉ EXTÉRIEURE</span></th>
+            <th></th>
+            <th>MUY-GX09NL-CA1</th>
+            <th>MUY-GX12NL-CA1</th>
+            <th>MUY-GX15NL-CA1</th>
+            <th>MUY-GX18NL-CA1</th>
+            <th>MUY-GX24NL-CA1</th>
+            <th>MUY-GX30NL-CA1</th>
+            <th>MUY-GX36NL-CA1</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!-- DATA (from: /mnt/data/Data Chart Templates Jan 13 2026.xlsx - 2. Cooling Only.csv) -->
+<tr style="border-bottom:2px solid #000;">
+  <td rowspan="1" style="background-color:#ffffff !important;">
+    <div style="display:inline-flex; align-items:center; gap:8px;">
+      <div>
+        <div style="font-weight:600;">ENERGY STAR QUALIFIED</div>
+        <div>Homologuées Energy Star</div>
+      </div>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/7/73/Energy_Star_logo.svg"
+        alt="Energy Star"
+        style="height:32px; width:32px; display:block;"
+      />
+    </div>
+  </td>
+  <td></td>
+  <td></td>
+  <td class="val">Yes/Oui</td>
+  <td class="val">Yes/Oui</td>
+  <td class="val">Yes/Oui</td>
+  <td class="val">Yes/Oui</td>
+  <td class="val">Yes/Oui</td>
+  <td class="val">Yes/Oui</td>
+  <td class="val">Yes/Oui</td>
+</tr>
+
+          <tr style="border-bottom:2px solid #000;"><td class='group' rowspan='1' style="background-color: white !important;"><div class='en'>Power Supply</div><div class='fr'>Alimentation électrique</div></td><td class='attr'><div class='en'>Voltage (IDU,ODU), Phase</div><div class='fr'>Tension (UI, UE), Phase</div></td><td class='unit'></td><td class='val'>230 / 208/1</td><td class='val'>230 / 208/1</td><td class='val'>230 / 208/1</td><td class='val'>230 / 208/1</td><td class='val'>230 / 208/1</td><td class='val'>230 / 208/1</td><td class='val'>230 / 208/1</td></tr>
+          <tr><td class='group' rowspan='7'><div class='en'>Cooling at 35°C</div><div class='fr'>Climatisation à 35°C</div></td><td class='attr'><div class='en'>Capacity Rated</div><div class='fr'>Capacité nominale</div></td><td class='unit'>Btu/h</td><td class='val'>9000</td><td class='val'>12000</td><td class='val'>14000</td><td class='val'>18000</td><td class='val'>22400</td><td class='val'>30600</td><td class='val'>33800</td></tr>
+          <tr><td class='attr'><div class='en'>Capacity Max</div><div class='fr'>Capacité maximale</div></td><td class='unit'>Btu/h</td><td class='val'>12200</td><td class='val'>14000</td><td class='val'>18200</td><td class='val'>22000</td><td class='val'>27000</td><td class='val'>30600</td><td class='val'>33800</td></tr>
+          <tr><td class='attr'><div class='en'>Power Consumption Rated</div><div class='fr'>Consommation d'énergie nominale</div></td><td class='unit'>W</td><td class='val'>585</td><td class='val'>900</td><td class='val'>1075</td><td class='val'>1280</td><td class='val'>1720</td><td class='val'>3380</td><td class='val'>4020</td></tr>
+          <tr><td class='attr'><div class='en'>Power Consumption Max</div><div class='fr'>Consommation d'énergie maximale</div></td><td class='unit'>W</td><td class='val'>1050</td><td class='val'>1490</td><td class='val'>2200</td><td class='val'>2150</td><td class='val'>2890</td><td class='val'>3380</td><td class='val'>4020</td></tr>
+          <tr><td class='attr'>SEER2</td><td class='unit'></td><td class='val'>28.4</td><td class='val'>25.6</td><td class='val'>22.2</td><td class='val'>22.5</td><td class='val'>21.5</td><td class='val'>19.2</td><td class='val'>18.5</td></tr>
+          <tr><td class='attr'>EER2</td><td class='unit'></td><td class='val'>15.4</td><td class='val'>13.35</td><td class='val'>13</td><td class='val'>14.05</td><td class='val'>13</td><td class='val'>9.05</td><td class='val'>8.4</td></tr>
+          <tr><td class='attr'><div class='en'>Moisture Removal</div><div class='fr'>Déshumidification</div></td><td class='unit'>Pints/h
+Pintes/h</td><td class='val'>0.8</td><td class='val'>2.5</td><td class='val'>2.3</td><td class='val'>3.4</td><td class='val'>4.5</td><td class='val'>8.3</td><td class='val'>10</td></tr>
+          <tr><td class='group' rowspan='1'><div class='en'>Indoor Sound Level [Cooling]</div><div class='fr'>Niveau sonore intérieur (Climatisation)</div></td><td class='attr'><div class='en'>Quiet/Lo/Me/Hi/Super Hi</div><div class='fr'>très faible/faible/moyenélevé/Très élevé</div></td><td class='unit'>dB (A)</td><td class='val'>19/22/30/37/43</td><td class='val'>19/22/30/37/45</td><td class='val'>26/32/38/44/51</td><td class='val'>28/33/38/44/49</td><td class='val'>30/37/41/48/53</td><td class='val'>30/37/41/48/53</td><td class='val'>30/37/41/48/53</td></tr>
+          <tr><td class='group' rowspan='1'><div class='en'>Indoor Air Volume [Cooling]</div><div class='fr'>Volume d'air intérieur (Climatisation)</div></td><td class='attr'><div class='en'>Slo/Lo/Me/Hi/Super Hi</div><div class='fr'>très faible/faible/moyenélevé/Très élevé</div></td><td class='unit'>CFM
+PCM</td><td class='val'>151/172/256/353/448</td><td class='val'>151/172/256/353/448</td><td class='val'>219/293/369/465/586</td><td class='val'>324/392/454/530/650</td><td class='val'>324/392/454/636/765</td><td class='val'>324/392/454/636/765</td><td class='val'>324/392/454/636/765</td></tr>
+          <tr><td class='group' rowspan='1'><div class='en'>Indoor Dimensions</div><div class='fr'>Dimensions intérieures</div></td><td class='attr'><div class='en'>Indoor Unit W/D/H/Indoor Weight</div><div class='fr'>Unité intérieure L/P/H/Poids de l'unité intérieure</div></td><td class='unit'>inch/lbs
+pouce/lb</td><td class='val'>31.40625/9.65625/11.78125/23</td><td class='val'>31.40625/9.65625/11.78125/23</td><td class='val'>31.40625/9.65625/11.78125/23</td><td class='val'>43.3125/10.125/12.8125/37</td><td class='val'>43.3125/10.125/12.8125/37</td><td class='val'>43.3125/10.125/12.8125/37</td><td class='val'>43.3125/10.125/12.8125/37</td></tr>
+          <tr><td class='group' rowspan='1'><div class='en'>Outdoor Sound Level</div><div class='fr'>Niveau sonore extérieur</div></td><td class='attr'><div class='en'>Cooling</div><div class='fr'>Climatisation</div></td><td class='unit'>dB (A)</td><td class='val'>48</td><td class='val'>49</td><td class='val'>49</td><td class='val'>54</td><td class='val'>55</td><td class='val'>57</td><td class='val'>57</td></tr>
+          <tr><td class='group' rowspan='1'><div class='en'>Outdoor Air Volume</div><div class='fr'>Volume d'air extérieur</div></td><td class='attr'><div class='en'>Cooling</div><div class='fr'>Climatisation</div></td><td class='unit'>CFM
+PCM</td><td class='val'>1177</td><td class='val'>1177</td><td class='val'>1191</td><td class='val'>1934</td><td class='val'>2015</td><td class='val'>2202</td><td class='val'>2202</td></tr>
+          <tr><td class='group' rowspan='1'><div class='en'>Outdoor Dimensions</div><div class='fr'>Dimensions extérieures</div></td><td class='attr'><div class='en'>Outdoor Unit W/D/H/Outdoor Weight</div><div class='fr'>Unité extérieure L/P/H/Poids de l'unité extérieure</div></td><td class='unit'>inch/lbs
+pouce/lb</td><td class='val'>31.5/11.25/21.625/77</td><td class='val'>31.5/11.25/21.625/77</td><td class='val'>31.5/11.25/21.625/81</td><td class='val'>33.0625/13/34.625/116</td><td class='val'>33.0625/13/34.625/116</td><td class='val'>33.0625/13/34.625/116</td><td class='val'>33.0625/13/34.625/116</td></tr>
+          <tr><td class='group' rowspan='1'><div class='en'>Minimum Outdoor Temperature</div><div class='fr'>Température extérieure minimale</div></td><td class='attr'><div class='en'>Cooling</div><div class='fr'>Climatisation</div></td><td class='unit'>°C</td><td class='val'>-10</td><td class='val'>-10</td><td class='val'>-10</td><td class='val'>-10</td><td class='val'>-10</td><td class='val'>-10</td><td class='val'>-10</td></tr>
+          <tr><td class='group' rowspan='1'><div class='en'>Refrigerant</div><div class='fr'>Réfrigérant</div></td><td class='attr'><div class='en'>Type</div><div class='fr'>Type</div></td><td class='unit'></td><td class='val'>R32</td><td class='val'>R32</td><td class='val'>R32</td><td class='val'>R32</td><td class='val'>R32</td><td class='val'>R32</td><td class='val'>R32</td></tr>
+          <tr><td class='group' rowspan='1'><div class='en'>Line Set</div><div class='fr'>Tuyauterie</div></td><td class='attr'><div class='en'>Liquid / Gas</div><div class='fr'>Liquide / Gaz</div></td><td class='unit'>inch</td><td class='val'>1/4 / 3/8</td><td class='val'>1/4 / 3/8</td><td class='val'>1/4 / 1/2</td><td class='val'>1/4 / 1/2</td><td class='val'>3/8 / 5/8</td><td class='val'>3/8 / 5/8</td><td class='val'>3/8 / 5/8</td></tr>
+          <tr><td class='group' rowspan='1'><div class='en'>Max Pipe Length</div><div class='fr'>Longueur maximale de tuyauterie</div></td><td class='attr'></td><td class='unit'>ft</td><td class='val'>65</td><td class='val'>65</td><td class='val'>65</td><td class='val'>65</td><td class='val'>100</td><td class='val'>100</td><td class='val'>100</td></tr>
+          <tr><td class='group' rowspan='1'><div class='en'>Max Height Difference</div><div class='fr'>Différence maximale de hauteur</div></td><td class='attr'></td><td class='unit'>ft</td><td class='val'>40</td><td class='val'>40</td><td class='val'>40</td><td class='val'>40</td><td class='val'>50</td><td class='val'>50</td><td class='val'>50</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes">
+      <span class="label">Notes:</span>
+      All test conditions are based on AHRI 210/240.
+      Toutes les méthodes d’essai sont basées sur les normes AHRI 210/240.
+
+      Rating conditions: Cooling – Indoor: 27°C DB, 19°C WB; Outdoor: 35°C DB, 24°C WB; Rated frequency
+      Conditions d'évaluation : Climatisation — T intérieure : 27 °C DB, 19 °C WB; T extérieure : 35 °C DB, 24 °C WB; fréquence nominale
+    </div>
+  </div>
+</body>
+</html>
